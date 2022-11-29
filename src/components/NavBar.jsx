@@ -8,10 +8,18 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useAuthContext } from "../contexts/AuthProvider";
+import useAuthCalls from "../hooks/useAuthCalls";
 
 export default function NavBar() {
+  const { currentUser } = useAuthContext();
+  const { logout } = useAuthCalls();
   const auth = true;
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,29 +33,26 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
+          <Typography
+            onClick={() => navigate("/")}
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, cursor: "pointer" }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Photos
+            {"<HMZAYGN/>"}
           </Typography>
           {auth && (
             <div>
               <IconButton
-                size="large"
+                size="small"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                {currentUser?.displayName || ""}
+                <AccountCircle sx={{ marginLeft: ".5rem" }} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -64,9 +69,32 @@ export default function NavBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Login</MenuItem>
-                <MenuItem onClick={handleClose}>Register</MenuItem>
-                <MenuItem onClick={handleClose}>New Blog</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {currentUser?.email ? (
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to="/login"
+                      onClick={logout}
+                    >
+                      Logout
+                    </Link>
+                  ) : (
+                    <Link style={{ textDecoration: "none" }} to="/login">
+                      Login
+                    </Link>
+                  )}
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link style={{ textDecoration: "none" }} to="/register">
+                    Register
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link style={{ textDecoration: "none" }} to="/newblog">
+                    New Blog
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}></MenuItem>
               </Menu>
             </div>
           )}

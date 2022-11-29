@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import useAuthCalls from "../hooks/useAuthCalls";
 
 const initialValues = {
+  name: "",
+  lastName: "",
   email: "",
   password: "",
 };
@@ -10,7 +12,7 @@ const initialValues = {
 const Register = () => {
   const [registerInfo, setRegisterInfo] = useState(initialValues);
 
-  const { register } = useAuthCalls();
+  const { register, googleAuth } = useAuthCalls();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,11 +21,34 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    register(registerInfo?.email, registerInfo?.password);
+    register(
+      registerInfo?.email,
+      registerInfo?.password,
+      registerInfo?.name,
+      registerInfo?.lastName
+    );
   };
 
   return (
     <Box component="form" onSubmit={handleSubmit}>
+      <TextField
+        required
+        type="text"
+        name="name"
+        variant="outlined"
+        label="Name"
+        value={registerInfo?.name || ""}
+        onChange={handleChange}
+      />
+      <TextField
+        required
+        type="text"
+        name="lastName"
+        variant="outlined"
+        label="Last Name"
+        value={registerInfo?.lastName || ""}
+        onChange={handleChange}
+      />
       <TextField
         required
         type="email"
@@ -44,6 +69,9 @@ const Register = () => {
       />
       <Button type="submit" variant="contained">
         Register
+      </Button>
+      <Button type="button" onClick={googleAuth} variant="contained">
+        Continue with Google
       </Button>
     </Box>
   );
