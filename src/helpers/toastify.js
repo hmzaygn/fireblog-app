@@ -13,3 +13,16 @@ export const toastSuccess = (msg) => {
     theme: "light",
   });
 };
+
+export const toastError = (msg) => {
+  toast.error(msg, {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+};

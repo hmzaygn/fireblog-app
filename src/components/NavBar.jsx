@@ -89,12 +89,18 @@ export default function NavBar() {
                     Register
                   </Link>
                 </MenuItem>
+                {currentUser?.email && (
+                  <MenuItem onClick={handleClose}>
+                    <Link style={{ textDecoration: "none" }} to="/newblog">
+                      New Blog
+                    </Link>
+                  </MenuItem>
+                )}
                 <MenuItem onClick={handleClose}>
-                  <Link style={{ textDecoration: "none" }} to="/newblog">
-                    New Blog
+                  <Link style={{ textDecoration: "none" }} to="/details">
+                    details
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleClose}></MenuItem>
               </Menu>
             </div>
           )}

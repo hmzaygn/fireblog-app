@@ -1,7 +1,6 @@
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -10,36 +9,32 @@ import {
 import { useNavigate } from "react-router";
 import { auth } from "../helpers/firebase";
 import { useAuthContext } from "../contexts/AuthProvider";
-import { toastSuccess } from "../helpers/toastify";
+import { toastError, toastSuccess } from "../helpers/toastify";
 
 const useAuthCalls = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useAuthContext();
 
   const register = async (email, password, name, lastName) => {
     const displayName = name + " " + lastName;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: displayName });
-      onAuthStateChanged(auth, (currentUser) => {
-        setCurrentUser(currentUser);
-      });
       navigate("/");
       toastSuccess(`Successfully Registered`);
     } catch (error) {
       console.log(error.message);
+      toastError("Can not be Registered");
     }
   };
 
   const login = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      onAuthStateChanged(auth, (currentUser) => {
-        setCurrentUser(currentUser);
-      });
-      navigate("/");
+      navigate(-1);
+      toastSuccess(`Successfully Logged In`);
     } catch (error) {
       console.log(error.message);
+      toastError("Can not be Logged In");
     }
   };
 
@@ -47,21 +42,19 @@ const useAuthCalls = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((res) => {
-        navigate("/");
-        onAuthStateChanged(auth, (currentUser) => {
-          setCurrentUser(currentUser);
-        });
+        navigate(-1);
+        toastSuccess(`Successfully Signed In`);
       })
       .catch((error) => {
         console.log(error.message);
+        toastError("Can not be Signed In");
       });
   };
 
   const logout = () => {
     signOut(auth);
-    onAuthStateChanged(auth, (currentUser) => {
-      setCurrentUser(currentUser);
-    });
+    navigate("/login");
+    toastSuccess(`Successfully Logged Out`);
   };
 
   return { login, register, logout, googleAuth };
