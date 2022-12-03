@@ -10,7 +10,6 @@ import { useNavigate } from "react-router";
 
 export default function BlogCard({ blog }) {
   const navigate = useNavigate();
-  console.log(blog);
   return (
     <Card
       sx={{ maxWidth: 300 }}

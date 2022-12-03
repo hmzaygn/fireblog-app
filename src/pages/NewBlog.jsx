@@ -1,11 +1,13 @@
 import { Button, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { useAuthContext } from "../contexts/AuthProvider";
 import { addBlog } from "../helpers/firebaseFunctions";
 
 const NewBlog = () => {
   const { currentUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const initialValues = {
     title: "",
@@ -25,6 +27,7 @@ const NewBlog = () => {
     e.preventDefault();
     addBlog(blogInfo);
     setBlogInfo(initialValues);
+    navigate("/");
   };
 
   return (

@@ -15,7 +15,10 @@ const Dashboard = () => {
             marginTop: "2rem",
           }}
         >
-          <img src="https://media.tenor.com/On7kvXhzml4AAAAi/loading-gif.gif" />
+          <img
+            src="https://media.tenor.com/On7kvXhzml4AAAAi/loading-gif.gif"
+            alt="loading"
+          />
         </Box>
       ) : (
         blogList?.map((blog) => <BlogCard key={blog.id} blog={blog} />)

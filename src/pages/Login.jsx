@@ -9,7 +9,6 @@ const initialValues = {
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState(initialValues);
-
   const { login, googleAuth } = useAuthCalls();
 
   const handleChange = (e) => {

@@ -8,7 +8,6 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router";
 import { auth } from "../helpers/firebase";
-import { useAuthContext } from "../contexts/AuthProvider";
 import { toastError, toastSuccess } from "../helpers/toastify";
 
 const useAuthCalls = () => {
@@ -30,7 +29,7 @@ const useAuthCalls = () => {
   const login = async (email, password) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate(-1);
+      navigate("/");
       toastSuccess(`Successfully Logged In`);
     } catch (error) {
       console.log(error.message);
@@ -42,7 +41,7 @@ const useAuthCalls = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((res) => {
-        navigate(-1);
+        navigate("/");
         toastSuccess(`Successfully Signed In`);
       })
       .catch((error) => {

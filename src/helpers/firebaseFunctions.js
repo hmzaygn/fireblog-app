@@ -1,4 +1,4 @@
-import { onValue, push, ref, set } from "firebase/database";
+import { onValue, push, ref, remove, set, update } from "firebase/database";
 import { useEffect, useState } from "react";
 import { db } from "./firebase";
 import { toastSuccess } from "./toastify";
@@ -34,4 +34,17 @@ export const useFetch = () => {
     });
   }, []);
   return { isloading, blogList };
+};
+
+export const deleteBlog = (id) => {
+  remove(ref(db, "blogs/" + id));
+  toastSuccess("Deleted Successfully");
+};
+
+export const putBlog = (info) => {
+  const updates = {};
+
+  updates["blogs/" + info.id] = info;
+
+  return update(ref(db), updates);
 };
