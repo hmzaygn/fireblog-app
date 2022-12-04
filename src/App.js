@@ -4,12 +4,10 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <div className="App">
-      <AuthProvider>
-        <AppRouter />
-        <ToastContainer />
-      </AuthProvider>
-    </div>
+    <AuthProvider>
+      <AppRouter />
+      <ToastContainer />
+    </AuthProvider>
   );
 }
 

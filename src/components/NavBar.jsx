@@ -18,7 +18,6 @@ export default function NavBar() {
   const auth = true;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const navigate = useNavigate();
-  console.log(currentUser);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -50,7 +49,19 @@ export default function NavBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                {currentUser?.displayName || (
+                {currentUser?.displayName}
+                {currentUser?.photoURL ? (
+                  <img
+                    style={{
+                      marginLeft: "1rem",
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "50%",
+                    }}
+                    src={currentUser?.photoURL}
+                    alt="avatar"
+                  />
+                ) : (
                   <AccountCircle sx={{ marginLeft: ".5rem" }} />
                 )}
               </IconButton>
@@ -93,6 +104,13 @@ export default function NavBar() {
                   <MenuItem onClick={handleClose}>
                     <Link style={{ textDecoration: "none" }} to="/newblog">
                       New Blog
+                    </Link>
+                  </MenuItem>
+                )}
+                {currentUser?.email && (
+                  <MenuItem onClick={handleClose}>
+                    <Link style={{ textDecoration: "none" }} to="/profile">
+                      Profile
                     </Link>
                   </MenuItem>
                 )}

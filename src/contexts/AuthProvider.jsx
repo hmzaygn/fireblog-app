@@ -13,12 +13,22 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => {
-      setCurrentUser(currentUser);
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser({});
+      }
     });
   }, []);
 
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return (
+    <>
+      {currentUser && (
+        <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
+      )}
+    </>
+  );
 };
 
 export const useAuthContext = () => {

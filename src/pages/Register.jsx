@@ -11,7 +11,6 @@ const initialValues = {
 
 const Register = () => {
   const [registerInfo, setRegisterInfo] = useState(initialValues);
-
   const { register, googleAuth } = useAuthCalls();
 
   const handleChange = (e) => {
