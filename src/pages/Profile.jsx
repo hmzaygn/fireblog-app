@@ -19,7 +19,7 @@ const Profile = () => {
       ) : (
         <img
           style={{ width: "250px" }}
-          src="./blank-profile-picture.png"
+          src="./images/blank-profile-picture.png"
           alt="profile_image"
         />
       )}

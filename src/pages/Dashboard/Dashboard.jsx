@@ -1,13 +1,23 @@
 import { Box } from "@mui/material";
 import React from "react";
-import BlogCard from "../components/BlogCard";
-import { useFetch } from "../helpers/firebaseFunctions";
+import BlogCard from "../../components/BlogCard/BlogCard";
+import { useFetch } from "../../helpers/firebaseFunctions";
 
 const Dashboard = () => {
   const { isLoading, blogList } = useFetch();
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginTop: "2rem",
+        marginBottom: "2rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "1rem",
+      }}
+    >
       {isLoading ? (
         <Box
           sx={{

@@ -1,6 +1,8 @@
 import { Box, Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import useAuthCalls from "../hooks/useAuthCalls";
+import GoogleIcon from "@mui/icons-material/Google";
+import FingerprintIcon from "@mui/icons-material/Fingerprint";
 
 const initialValues = {
   name: "",
@@ -66,11 +68,16 @@ const Register = () => {
         value={registerInfo?.password || ""}
         onChange={handleChange}
       />
-      <Button type="submit" variant="contained">
+      <Button type="submit" variant="contained" endIcon={<FingerprintIcon />}>
         Register
       </Button>
-      <Button type="button" onClick={googleAuth} variant="contained">
-        Continue with Google
+      <Button
+        type="button"
+        onClick={googleAuth}
+        variant="contained"
+        endIcon={<GoogleIcon />}
+      >
+        Continue with
       </Button>
     </Box>
   );

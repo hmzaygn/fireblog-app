@@ -1,0 +1,13 @@
+.blog-card {
+    cursor: pointer;
+
+}
+
+.blog-card-img {
+    object-fit: contain;
+    transition: all .3s;
+}
+
+.blog-card:hover .blog-card-img {
+    transform: scale(1.10);
+}

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import Dashboard from "../pages/Dashboard";
-import Details from "../pages/Details";
-import Login from "../pages/Login";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Details from "../pages/Details/Details";
+import Login from "../pages/Login/Login";
 import Register from "../pages/Register";
 import NewBlog from "../pages/NewBlog";
 import UpdateBlog from "../pages/UpdateBlog";

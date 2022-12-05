@@ -1,0 +1,40 @@
+.img-box {
+    height: calc(100vh - 63px);
+
+}
+
+.img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.form-container {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background-color: azure;
+    padding: 2rem;
+    width: 25rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    box-shadow: 0 0 20px 0;
+}
+
+.input {
+    background-color: rgba(8, 8, 8, 0.13);
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1535px) {
+    .main {
+        flex-direction: column-reverse;
+    }
+}
