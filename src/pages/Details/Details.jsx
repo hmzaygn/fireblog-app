@@ -18,6 +18,9 @@ const Details = () => {
 
   return (
     <Box className={detailsStyle["main"]}>
+      <Typography variant="h2" className={detailsStyle["header"]}>
+        ~~ Details ~~
+      </Typography>
       <Paper elevation={12} className={detailsStyle["card"]}>
         <img className={detailsStyle["img"]} src={blog.img} alt={blog.title} />
         <Typography variant="h2">{blog.title}</Typography>

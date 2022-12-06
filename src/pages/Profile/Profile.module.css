@@ -1,28 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
 
 .main {
-    margin-top: 1rem;
+    /* border: 1px solid red; */
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
 }
 
 .header {
     font-family: 'Girassol', cursive;
     color: rgb(3, 66, 66);
-    text-align: center;
-}
-
-.card {
-    width: 50rem;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
 }
 
 .img {
-    width: 500px;
+    width: 350px;
+    height: 350px;
+    border-radius: 20%;
 }

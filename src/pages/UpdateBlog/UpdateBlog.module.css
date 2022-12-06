@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
 
 .main {
-    margin-top: 1rem;
+    height: calc(100vh - 70px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,18 +11,17 @@
     font-family: 'Girassol', cursive;
     color: rgb(3, 66, 66);
     text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
-.card {
-    width: 50rem;
+.form {
+    background-color: rgb(255, 255, 255);
     padding: 2rem;
+    width: 20rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-.img {
-    width: 500px;
+    gap: 1rem;
 }

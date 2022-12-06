@@ -4,11 +4,11 @@ import NavBar from "../components/NavBar";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Details from "../pages/Details/Details";
 import Login from "../pages/Login/Login";
-import Register from "../pages/Register";
-import NewBlog from "../pages/NewBlog";
-import UpdateBlog from "../pages/UpdateBlog";
+import Register from "../pages/Register/Register";
+import NewBlog from "../pages/NewBlog/NewBlog";
+import UpdateBlog from "../pages/UpdateBlog/UpdateBlog";
 import PrivateRouter from "./PrivateRouter";
-import Profile from "../pages/Profile";
+import Profile from "../pages/Profile/Profile";
 
 const AppRouter = () => {
   return (
